@@ -21,6 +21,6 @@ The UI is powered by UICollectionView and diffable datasource which eliminates t
 ### Enhancements
 * Add Map interface with restaurants annotations overlay.
 * Adding coordinator for flexible and scalable routing.
-* On demand location search.
+* On-demand location search.
 * Add restaurant filters.
-* Addtional Unit and UITests.
+* Additional Unit and UITests.
