@@ -1,6 +1,10 @@
 # Resto
 
-Resto is a simple iOS app which runs on iOS 14+ and is a simple way to find and call/navigate to the best restaurants around you. It is written in Swift and uses Core Location and MapKit to power the experience. The architecture is MVVM which callback acting as the binding layer between view model and view. Interaction and communcation with frameworks like CoreLocation and MapKit is facilitated through multiple controllers/managers. The UI is powered by UICollectionView and diffable datasource which eliminates the need for manual table view data management. A slider is a part of the list UI to allow the user to change the radius of search with the current location being the center of the search. The restaurant data is provided by TomTom.
+Resto is a simple iOS app that runs on iOS 14+ and is a simple way to find and call/navigate to the best restaurants around you. 
+
+It is written in Swift and uses Core Location and MapKit to power the experience. The architecture is MVVM where callback acts as the binding layer between the view model and view. Interaction and communication with frameworks like CoreLocation and MapKit are facilitated through multiple controllers/managers. The point of segregating functionality into multiple classes is to promote testability via mocks for example and make each class responsible for only one thing.
+
+The UI is powered by UICollectionView and diffable datasource which eliminates the need for manual table view data management. A slider is a part of the list UI to allow the user to change the radius of the search with the current location being the center of the search. The restaurant data is provided by TomTom.
 
 ### Installation
 * Navigate to Resto root folder.
