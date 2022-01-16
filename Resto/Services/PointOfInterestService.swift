@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class PointOfInterestService {
+protocol PointOfInterestService {
+    func seachPointOfInterests(lat: String, lon: String, radiusInMetres: Float, completion: @escaping(Result<POIAPIResponse, Error>) -> Void)
+}
+
+final class TomTomPointOfInterestService: PointOfInterestService {
     private enum TOMTOMAPI {
         static let key = "ylEA72b3Z1NnqlxVoqPiHLPw0GunJ4rn"
         static var url: URL? {

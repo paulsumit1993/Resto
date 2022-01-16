@@ -14,7 +14,7 @@ class RestaurantsListViewModelTests: XCTestCase {
     override func setUp() {
         let mockLocationManager = MockLocationManager()
         let locationService = CurrentLocationService(locationManager: mockLocationManager)
-        let poiService = PointOfInterestService()
+        let poiService = MockPointOfInterestService()
         sut = RestaurantsListViewModel(locationService: locationService, pointOfInterestService: poiService)
     }
 

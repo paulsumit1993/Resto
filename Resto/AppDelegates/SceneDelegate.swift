@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let locationManager = CLLocationManager()
         let locationService = CurrentLocationService(locationManager: locationManager)
-        let poiService = PointOfInterestService()
+        let poiService = TomTomPointOfInterestService()
         let viewModel = RestaurantsListViewModel(locationService: locationService, pointOfInterestService: poiService)
         let viewController = RestaurantsListViewController(viewModel: viewModel)
         let navigation = UINavigationController(rootViewController: viewController)

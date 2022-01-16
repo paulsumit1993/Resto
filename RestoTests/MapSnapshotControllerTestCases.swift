@@ -10,14 +10,6 @@ import XCTest
 
 @testable import Resto
 
-final class MockMapSnapshotter: MapSnapshotter {
-    init(lat: Double, lon: Double) { }
-
-    func start(completionHandler: @escaping ((UIImage) -> Void)) {
-        completionHandler(UIImage())
-    }
-}
-
 class MapSnapshotControllerTestCases: XCTestCase {
     func testMapSnapshotService() {
         var imageToTest: UIImage?
