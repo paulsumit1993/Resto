@@ -21,6 +21,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewModel = RestaurantsListViewModel(locationService: locationService, pointOfInterestService: poiService)
         let viewController = RestaurantsListViewController(viewModel: viewModel)
         let navigation = UINavigationController(rootViewController: viewController)
+
+        viewController.didSelectPointOfInterest = { pointOfInterest in
+            if let lat = pointOfInterest.position.lat,
+                let lon = pointOfInterest.position.lon {
+                let mapSnapshotter = MapKitMapSnapshotterController(lat: lat, lon: lon)
+                let detailViewModel = RestaurantDetailViewModel(pointOfinterest: pointOfInterest, mapSnapshotController: mapSnapshotter)
+                let detailViewController = RestaurantDetailViewController(viewModel: detailViewModel)
+                navigation.pushViewController(detailViewController, animated: true)
+            }
+        }
+
         window.rootViewController = navigation
         self.window = window
         window.makeKeyAndVisible()

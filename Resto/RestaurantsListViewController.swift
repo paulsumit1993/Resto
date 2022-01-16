@@ -12,6 +12,7 @@ final class RestaurantsListViewController: UIViewController {
     private enum Section {
         case main
     }
+    var didSelectPointOfInterest: ((PointOfInterestInfo) -> Void)?
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let loadingView = UIActivityIndicatorView(style: .large)
     private let viewModel: RestaurantsListViewModel
@@ -71,6 +72,7 @@ final class RestaurantsListViewController: UIViewController {
         var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         config.backgroundColor = .tertiarySystemGroupedBackground
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: config)
+        collectionView.delegate = self
     }
 
     private func setupSlider() {
@@ -144,5 +146,14 @@ final class RestaurantsListViewController: UIViewController {
         snapshot.appendSections([Section.main])
         snapshot.appendItems(pointOfInterests)
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+}
+
+extension RestaurantsListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let pointOfInterest = dataSource.itemIdentifier(for: indexPath) {
+            didSelectPointOfInterest?(pointOfInterest)
+            collectionView.deselectItem(at: indexPath, animated: true)
+        }
     }
 }
