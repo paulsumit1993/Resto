@@ -10,6 +10,11 @@ import XCTest
 @testable import Resto
 
 class PointOfInterestTestCase: XCTestCase {
+    private var sut: MockPointOfInterestService!
+
+    override func setUp() {
+        sut = MockPointOfInterestService()
+    }
 
     func testPointOfInterestInfoModelEquality() throws {
         let poi = PointOfinterest(name: "Noma", phone: "+123", url: nil, categories: nil)
@@ -23,5 +28,18 @@ class PointOfInterestTestCase: XCTestCase {
         let decoder = JSONDecoder()
         let decodedData = try decoder.decode(PointOfInterestInfo.self, from: data)
         XCTAssertEqual(sut, decodedData)
+    }
+
+    func testasas() {
+        var apiResponse: POIAPIResponse?
+        let expectation = expectation(description: "Load point of interest service data")
+        sut.seachPointOfInterests(lat: "0.0", lon: "0.0") { result in
+            if case let .success(response) = result {
+                apiResponse = response
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 0.01)
+        XCTAssertNotNil(apiResponse)
     }
 }
