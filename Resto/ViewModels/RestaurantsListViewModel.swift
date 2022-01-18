@@ -20,7 +20,7 @@ final class RestaurantsListViewModel {
 
     var onAction: ((Action) -> Void)?
     let minimumStepValue: Float = 100.0
-    let maximumStepValue: Float = 100000.0
+    let maximumStepValue: Float = 10000.0
     private let locationService: CurrentLocationService
     private let pointOfInterestService: PointOfInterestService
     private var previousStepValue: Float = 100.0
