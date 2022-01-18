@@ -37,6 +37,6 @@ class RestaurantsListViewModelTests: XCTestCase {
 
     func testMinMaxStepValues() {
         XCTAssertEqual(sut.minimumStepValue, 100.0)
-        XCTAssertEqual(sut.maximumStepValue, 100000.0)
+        XCTAssertEqual(sut.maximumStepValue, 10000.0)
     }
 }
